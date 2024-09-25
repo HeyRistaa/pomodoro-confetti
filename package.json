@@ -1,0 +1,53 @@
+{
+  "name": "confetti-time",
+  "displayName": "Confetti Time",
+  "description": "Opens a site after a specified time of using VS Code",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:confettiOpener.start"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "confettiOpener.start",
+        "title": "Start Confetti Timer"
+      },
+      {
+        "command": "confettiOpener.stop",
+        "title": "Stop Confetti Timer"
+      },
+      {
+        "command": "confettiOpener.status",
+        "title": "Check Confetti Timer Status"
+      }
+    ],
+    "configuration": {
+      "title": "Confetti Time",
+      "properties": {
+        "confettiOpener.minutes": {
+          "type": "number",
+          "default": 30,
+          "description": "Number of minutes before confetti therapy starts"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "node ./esbuild.js",
+    "package": "node ./esbuild.js --minify",
+    "watch": "node ./esbuild.js --watch"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/node": "^14.15.0",
+    "esbuild": "^0.14.47"
+  }
+}
